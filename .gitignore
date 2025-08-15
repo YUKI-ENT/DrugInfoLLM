@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environment
+venv/
+env/
+.venv/
+ENV/
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints
+
+# VSCodeなどIDE設定
+.vscode/
+.idea/
+
+# OS・エディタ用一時ファイル
+.DS_Store
+Thumbs.db
+*.swp
+*.bak
+
+# Log files
+*.log
+
+# Environment and config files (optionally)
+config.json
+
+# Data files
+*.dat
+*.csv
+drug_information/
+drug_information.test/
+
+# Ollamaなどで生成されるキャッシュなどがあれば適宜追加
