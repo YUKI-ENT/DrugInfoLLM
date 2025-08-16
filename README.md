@@ -289,3 +289,32 @@ RSBase付属の `drug_information.zip` を `DrugInfoLLM` フォルダにコピ�
 unzip drug_information.zip
 ```
 #### 2-2 config.jsonの設定
+`DrugInfoLLM` フォルダ内の`config.json.org`を`config.json`にコピーし、編集します。PostgreSQLのパスワードの書き換え以外はデフォルトでいいと思います。
+```bash
+cp config.json.org config.json
+nano config.json
+```
+  - "ollama_model": 利用するLLMを指定します。実行する前にollama pull でモデルをダウンロードしておきます。
+  - "chunk_length": 元の文章が長い場合、この文字数で切り分けます。コンテキスト長が短いモデルやハルシネーションが起こる場合は短くしてみてください。
+  - "chunk_overlap": 切り分けた場合、文章途中で切ってしまって意味がわからなくなるのを防ぐため重なりを設けます
+  - "ollama_timeout": ollama問い合わせのタイムアウト秒数 
+  - "gpu_cooling_wait": 10件の問い合わせごとに、この秒数処理を中止し、GPUの加熱を防ぎます。レンタルサーバー等GPUに余裕があれば0にしましょう。
+  - "DI_folder": 添付文書フォルダ
+
+#### 2-3 添付文書テキスト→ 項目分割とデータベース転送( `11druginformation2SQL_score.py` )
+```bash
+python3 11druginformation2SQL_score.py
+```
+30分くらい処理にかかると思います。エラーログは `11heading_detect.log` に出力されます。
+うまくいくと、PostgreSQLサーバーのOQSDrug_dataデータベースにdrug_filedataというテーブルができて数万件のレコードが登録されます。
+![filedata](https://github.com/user-attachments/assets/af65cb52-768c-4af4-baa5-3c43628c1330)
+
+#### 2-4 分割済みデータ→ LLMで相互作用薬抽出（ `12InteractionLLM.py` ）
+```bash
+python3 12InteractionLLM.py
+```
+ものすごく時間がかかります。当環境では2日かかりました。GPUの発熱も大きいので夏場は冷却にも気をつけてください。
+![console1](https://github.com/user-attachments/assets/f7f82428-53b7-4009-b9bd-9cbe9d12598c)
+
+うまくいくと `drug_interaction` テーブルができます。
+![drug_interaction](https://github.com/user-attachments/assets/bb213e43-b792-4db3-aab3-2a9e7528780c)
