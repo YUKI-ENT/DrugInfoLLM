@@ -1,0 +1,16 @@
+{
+  "db": {
+    "host": "localhost",
+    "port": 5432,
+    "dbname": "OQSDrug_data",
+    "user": "postgres",
+    "password": "medicalin"
+  },
+  "ollama_url": "http://localhost:11434/api/generate",
+  "ollama_model": "gemma3:4b",
+  "chunk_length": 2000,
+  "chunk_overlap": 100,
+  "ollama_timeout": 120,
+  "gpu_cooling_wait": 15,
+  "DI_folder": "./drug_information"
+}
