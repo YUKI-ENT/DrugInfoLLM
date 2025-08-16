@@ -98,7 +98,66 @@ sudo ubuntu-drivers autoinstall
 sudo reboot
 ```
 
+---
 
+### 2. Ollama の導入
+
+Ollamaは、ローカル環境でLLMモデルを実行するためのランタイムです。以下のコマンドでインストールできます。
+
+```bash
+curl -fsSL [https://ollama.com/install.sh](https://ollama.com/install.sh) | sh
+```
+
+> **💡ヒント**
+> このスクリプトは、Ollamaの実行ファイルを `/usr/local/bin/` に配置し、サービスとして自動起動するように設定します。
+> アップデート時もこのコマンドで上書きします。
+
+#### 外部からの接続を許可する設定
+
+デフォルトでは、Ollamaは `http://localhost:11434` のみにバインドされており、同じPCからしかアクセスできません。ローカルネットワーク上の他のPCやデバイスから接続できるようにするには、サービス設定を変更して `0.0.0.0` にバインドする必要があります。
+
+以下のコマンドでサービス設定ファイルを編集します。
+
+```bash
+sudo systemctl edit ollama.service
+```
+エディタが開いたら、以下の内容を記述して保存してください。
+
+```ini
+[Service]
+Environment="OLLAMA_HOST=0.0.0.0"
+```
+#### 変更の適用とサービス再起動
+
+設定変更を反映し、Ollamaを再起動します。
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl restart ollama
+```
+これにより、Ollamaが再起動され、ネットワーク上のすべてのインターフェースからの接続を受け付けるようになります。設定が反映されているかは、`sudo systemctl status ollama` コマンドで確認できます。
+
+#### インストール後の確認とモデルのダウンロード
+
+インストールが完了したら、バージョン情報とサービスの稼働状況を確認します。
+
+```bash
+# Ollamaのバージョン確認
+ollama --version
+
+# Ollamaサービスの稼働状況確認
+systemctl status ollama
+
+# モデルのダウンロード（初回のみ）
+# 本プロジェクトでは、gemma3:4b をテストモデルとして推奨します
+ollama run gemma3:4b
+```
+
+これにより、Ollamaが正常に動作し、必要なモデルがダウンロードされます。
+
+#### GPU利用の確認
+
+OllamaがGPUを使っているかどうかは、`nvidia-smi` コマンドで確認できます。モデルを推論中に `nvidia-smi` を実行し、Ollamaのプロセスがリストに表示され、GPUメモリが使用されていれば成功です。
 
 
 

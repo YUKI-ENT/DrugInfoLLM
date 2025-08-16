@@ -37,3 +37,4 @@ drug_information/
 drug_information.test/
 
 # Ollamaなどで生成されるキャッシュなどがあれば適宜追加
+progress_interaction.json
