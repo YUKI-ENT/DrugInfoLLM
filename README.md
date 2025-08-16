@@ -112,7 +112,7 @@ curl -fsSL [https://ollama.com/install.sh](https://ollama.com/install.sh) | sh
 > このスクリプトは、Ollamaの実行ファイルを `/usr/local/bin/` に配置し、サービスとして自動起動するように設定します。
 > アップデート時もこのコマンドで上書きします。
 
-#### 外部からの接続を許可する設定
+#### (a) 外部からの接続を許可する設定
 
 デフォルトでは、Ollamaは `http://localhost:11434` のみにバインドされており、同じPCからしかアクセスできません。ローカルネットワーク上の他のPCやデバイスから接続できるようにするには、サービス設定を変更して `0.0.0.0` にバインドする必要があります。
 
@@ -127,7 +127,7 @@ sudo systemctl edit ollama.service
 [Service]
 Environment="OLLAMA_HOST=0.0.0.0"
 ```
-#### 変更の適用とサービス再起動
+#### (b) 変更の適用とサービス再起動
 
 設定変更を反映し、Ollamaを再起動します。
 
@@ -137,7 +137,7 @@ sudo systemctl restart ollama
 ```
 これにより、Ollamaが再起動され、ネットワーク上のすべてのインターフェースからの接続を受け付けるようになります。設定が反映されているかは、`sudo systemctl status ollama` コマンドで確認できます。
 
-#### インストール後の確認とモデルのダウンロード
+#### (c) インストール後の確認とモデルのダウンロード
 
 インストールが完了したら、バージョン情報とサービスの稼働状況を確認します。
 
@@ -155,9 +155,10 @@ ollama run gemma3:4b
 
 これにより、Ollamaが正常に動作し、必要なモデルがダウンロードされます。
 
-#### GPU利用の確認
+#### (d) GPU利用の確認
 
 OllamaがGPUを使っているかどうかは、`nvidia-smi` コマンドで確認できます。モデルを推論中に `nvidia-smi` を実行し、Ollamaのプロセスがリストに表示され、GPUメモリが使用されていれば成功です。
+![ollama_smi](https://github.com/user-attachments/assets/f67e3b89-c4ca-44d3-872c-4dd3a1a68aac)
 
 
 
