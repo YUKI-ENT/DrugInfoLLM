@@ -168,7 +168,7 @@ OllamaがGPUを使っているかどうかは、`nvidia-smi` コマンドで確�
 
 ### 3. Open WebUIの導入（オプション）
 
-Open WebUIは、OllamaのAPIを介してLLMを操作するための、ChatGPTのように使いやすいウェブインターフェースです。ナレッジという機能を使うとRAGのように外部ファイル情報を参照して回答させることもできます。
+[Open WebUI](https://github.com/open-webui/open-webui) は、OllamaのAPIを介してLLMを操作するための、ChatGPTのように使いやすいウェブインターフェースです。ナレッジという機能を使うとRAGのように外部ファイル情報を参照して回答させることもできます。
 
 Dockerでの導入方法を説明します。**OllamaがすでにホストOSで動作していること**を前提とします。
 #### (a) Dockerのインストール
@@ -314,7 +314,9 @@ python3 11druginformation2SQL_score.py
 python3 12InteractionLLM.py
 ```
 ものすごく時間がかかります。当環境では2日かかりました。GPUの発熱も大きいので夏場は冷却にも気をつけてください。
+
 ![console1](https://github.com/user-attachments/assets/f7f82428-53b7-4009-b9bd-9cbe9d12598c)
 
 うまくいくと `drug_interaction` テーブルができます。
+
 ![drug_interaction](https://github.com/user-attachments/assets/bb213e43-b792-4db3-aab3-2a9e7528780c)
