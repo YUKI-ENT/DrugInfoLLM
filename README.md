@@ -11,7 +11,7 @@ LLM 応答の精度向上に役立てることを目標にしています。
 スクリプトとLLMで構造化して、このようなデータベースにして見やすく、加工しやすい状態にするのが本ツールの目的です。
 ![sampleinteraction](https://github.com/user-attachments/assets/3eb47dc1-742c-4145-8e81-7041a85c99fc)
 
-拙作の `OQSDrug` から利用すると、このように相互作用薬の一覧が表示されます。
+拙作の [OQSDrug](https://github.com/YUKI-ENT/OQSDrug) から利用すると、このように相互作用薬の一覧が表示されます。
 ![OQSDrug](https://github.com/user-attachments/assets/3843a991-7e63-4576-931b-5bbee3586299)
 
 
