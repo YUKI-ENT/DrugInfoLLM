@@ -5,10 +5,10 @@
 将来的には、このデータベースを **RAG**（Retrieval-Augmented Generation）の知識ベースとして利用し、
 LLM 応答の精度向上に役立てることを目標にしています。
 
-構造化されていない薬剤情報
+このような構造化されていない薬剤情報を、
 ![origdrug](https://github.com/user-attachments/assets/d5050f9a-044b-4ab0-a74c-59e93ef585ac)
 
-これをスクリプトとLLMで構造化してデータベースにします
+スクリプトとLLMで構造化して、このようなデータベースにして見やすく、加工しやすい状態にするのが本ツールの目的です。
 ![sampleinteraction](https://github.com/user-attachments/assets/3eb47dc1-742c-4145-8e81-7041a85c99fc)
 
 ---
@@ -25,7 +25,7 @@ LLM 応答の精度向上に役立てることを目標にしています。
 
    ![drug_interaction](https://github.com/user-attachments/assets/bb213e43-b792-4db3-aab3-2a9e7528780c)
    
-> このような形の相 **相互作用薬リスト** ができます。これにより、アプリやUIで相互作用薬を一覧表示でき、RAG の索引やAI学習素材としても活用できます。
+> このような形の相 **相互作用薬リスト** ができます。これにより、アプリやUIで相互作用薬を一覧表示でき、RAG の索引やAI学習素材としても活用することが期待できます。
 
 ---
 
@@ -38,6 +38,7 @@ LLM 応答の精度向上に役立てることを目標にしています。
 - **CPU / RAM**: Intel Core i9-9900 / 32GB
 - **Python**: 3.12.3
 - **LLM ランタイム**: Ollama（ローカル推論, 既定で `http://localhost:11434`）
+- **PostgreSQL** ：16.9 (ベクトル検索機能まで使うにはVer.15 以上が必要です) 
 
 ---
 
