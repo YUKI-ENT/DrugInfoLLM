@@ -4,7 +4,7 @@
     "port": 5432,
     "dbname": "OQSDrug_data",
     "user": "postgres",
-    "password": "medicalin"
+    "password": ""
   },
   "ollama_url": "http://localhost:11434/api/generate",
   "ollama_model": "gemma3:4b",
