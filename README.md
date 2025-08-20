@@ -162,7 +162,7 @@ sudo reboot
 Ollamaは、ローカル環境でLLMモデルを実行するためのランタイムです。以下のコマンドでインストールできます。
 
 ```bash
-curl -fsSL [https://ollama.com/install.sh](https://ollama.com/install.sh) | sh
+curl -fsSL https://ollama.com/install.sh | sh
 ```
 
 > **💡ヒント**
